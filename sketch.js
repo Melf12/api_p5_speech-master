@@ -5,7 +5,7 @@ let resultP;
 let leftDiv;
 let counter;
 let cnv, myRec, btn, txt;
-
+//kommentar
 function setup() {
     let SpeechRecognition = window.webkitSpeechRecognition ||
         window.mozSpeechRecognition ||
