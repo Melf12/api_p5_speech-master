@@ -2,7 +2,7 @@
 
 ###Example project to illustrate use of the p5 speech api
 
-Koden i sketch.js virker nu til en lille præsentation med omrent 7 billeder. 
+Koden i sketch.js virker nu til en lille præsentation med 7 billeder. 
 Keywords = Kakao, Legenden, Magnus, easy, protein,store,tæneren
 
 Efter mikrofonen, på computeren er tændt, vil der ved udtale af disse 7 ord, komme et tilsvarende billede op på skærmen. Dette bruges til visuelt, at vise, hvad du snakker om og kan bruges i en fremlæggelses context. 
