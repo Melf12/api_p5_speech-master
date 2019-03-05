@@ -5,8 +5,13 @@ let resultP;
 let leftDiv;
 let counter;
 let cnv, myRec, btn, txt;
+let img;
+let img2;
+let ni=0;
 //kommentar
 function setup() {
+    img2 =loadImage('billede/img2.jpg'); 
+    img = loadImage('billede/image.png'); // Load the image
     let SpeechRecognition = window.webkitSpeechRecognition ||
         window.mozSpeechRecognition ||
         window.msSpeechRecognition ||
@@ -34,21 +39,54 @@ function setup() {
                 myRec = new p5.SpeechRec();
                 myRec.continuous = true;
                 myRec.interimResults = true;
+                myRec.default_language ="da-DK";
                 myRec.onResult = showResult;
                 myRec.start();
             });
     }
 }
 
-function draw() {}
+function draw() {
+   if(ni == 1){
+    image(img, 0, height/2, 400, 300);
+   } else{if(ni == 2){
+    image(img2, 0, height/2, 400, 300);
+    
+   }}
+
+}
 
 function showResult() {
     if (myRec.resultValue == true) {
         sentence = myRec.resultString;
         resultP.html(sentence);
 
-        if (sentence.includes("orange")) {
+      
         }
 
-    }
-}
+        if (sentence.includes("kakao")) {
+              ni=1;
+
+
+
+                    }else{
+            if (sentence.includes("Magnus")) {
+                ni=2;
+                
+            
+                
+               
+        }
+        if (sentence.includes("Homeboy")) {
+            ni=3;
+            
+        
+            
+           
+    }  
+        }
+            
+        
+        }
+
+    
