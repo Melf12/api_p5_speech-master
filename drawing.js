@@ -89,10 +89,11 @@ function showResult() {
               break;
 
               case "fisk":
-              ni.size +=10;
-   
-               case "smaller":
-               ni.size -=10;
+              ni.size +=50;
+              break;
+               case "sko":
+               ni.size -=50;
+               break;
 
             default:
             direction = "stop"
