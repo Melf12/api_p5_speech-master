@@ -43,7 +43,7 @@ function setup() {
         }
         }
     }
-    console.log("ni findes, og dens x værdi er: " + ni.x)
+    
 
 
 
@@ -87,8 +87,8 @@ function showResult() {
               case 'down':
               direction = "down"
               break;
-              
-              case "hej":
+
+              case "fisk":
               ni.size +=10;
    
                case "smaller":
