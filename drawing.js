@@ -183,16 +183,6 @@ function setup() {
                             }
 
 
-
-
-
-
-
-
-
-
-
-
             if (tids > 30000) {
                 tegning = false;
                 direction = "";
@@ -235,12 +225,7 @@ function draw() {
 
 
 
-    //let timer = millis-timer;
-
-    /* if(direction == "big") ni.size +;
-     if(direction == "small") ni.size -= 10;*/
-
-    /*  ni.x = direction == "left" ? ni.x -- : direction = "right" ? ni.x ++ : direction == "up" ? ni.y -- : direction = "down" ? ni.y ++ : ni.x;*/
+    
 
     ni.bounce();
     ni.show();
