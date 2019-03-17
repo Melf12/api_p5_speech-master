@@ -3,7 +3,11 @@
 //cloned from github.com/simmoe/p5_api_speech
 
 let myRec, browserCompatible, pen, direction, displayWord;
-
+let a = +0.1;
+let r = +1;
+let q = 2
+let tid;
+let tegning = false;
 
 function setup() {
     cnv = createCanvas(400, 400);
@@ -25,7 +29,7 @@ function setup() {
     displayWord = createDiv();
 
 
-     ni = {
+    ni = {
         x: width / 2,
         y: height / 2,
         size: 6,
@@ -35,15 +39,176 @@ function setup() {
             ellipseMode(CENTER)
             ellipse(this.x, this.y, this.size, this.size)
         },
-        bounce: function(){
-       // if(ni.x < 0){
-     // ni.x = 0;
-            this.x = this.x < 0 ? 0 : this.x > width ? width : this.x
-            
+        bounce: function () {
+            // if(ni.x < 0){
+            // ni.x = 0;
+            this.x = this.x < 0 ? 0 : this.x;
+
+            this.x > width ? width : this.x;
+
+            this.y = this.y < 0 ? 0 : this.y;
+
+            this.y > height ? height : this.y;
+
+
+
+            //if(this.y>600)
+
+        },
+        move: function () {
+            if (!tegning) {
+                tegning = true;
+                tid = millis();
+
+            }
+            var tids = millis() - tid;
+
+            if (tids < 1000) {
+                ni.x--;
+            }
+            if (tids < 1600 && tids > 1000) {
+                ni.y--;
+                ni.x--;
+            }
+            if (tids < 2500 && tids > 1600) {
+                ni.y--;
+            }
+            if (tids < 3100 && tids > 2500) {
+                ni.y--;
+                ni.x++;
+            }
+
+            if (tids < 4100 && tids > 3100) {
+
+                ni.x++;
+            }
+            if (tids < 4700 && tids > 4100) {
+                ni.y++;
+                ni.x++;
+
+            }
+            if (tids < 5600 && tids > 4700) {
+                ni.y++;
+            }
+
+            if (tids < 6200 && tids > 5600) {
+                ni.y++;
+                ni.x--;
+            }
+            if (tids < 6300 && tids > 6200) {
+                ni.y = (113)
+                ni.x = (137)
+            }
+            if (tids < 6400 && tids > 6300) {
+                ni.y = (113)
+                ni.x = (188)
+            }
+            if (tids < 6500 && tids > 6400) {
+                ni.y = (163)
+                ni.x = (183)
+            }
+            if (tids < 6700 && tids > 6500) {
+                ni.y++
+                ni.x--
+            }
+            if (tids < 7000 && tids > 6700) {
+                ni.x--
+            }
+            if (tids < 7200 && tids > 7000) {
+                ni.y--
+                ni.x--
+            }
+            if (tids < 7300 && tids > 7200) {
+                ni.y = (202)
+                ni.x = (163)
+            }
+            if (tids < 8800 && tids > 7400) {
+                ni.y++
+            }
+            if (tids < 10000 && tids > 8800) {
+                ni.y--
+                ni.x++
+            }
+            if (tids < 11200 && tids > 10000) {
+                ni.y++
+                ni.x--
+            }
+            if (tids < 12000 && tids > 11200) {
+                ni.y++
+
+            }
+            if (tids < 13000 && tids > 12000) {
+                ni.y++
+                ni.x++
+            }
+            if (tids < 14000 && tids > 13000) {
+                ni.y--
+                ni.x--
+            }
+            if (tids < 15000 && tids > 14000) {
+                ni.y++
+                ni.x--
+
+            }
+            if (tids < 16000 && tids > 15000) {
+                ni.y--
+                ni.x++
+            }
+            if (tids < 16800 && tids > 16000) {
+                ni.y--
+            }
+            if (tids < 18000 && tids > 16800) {
+                ni.y--
+                ni.x--
+            }
+            if (tids < 19200 && tids > 18000) {
+                ni.y++
+                ni.x++
+            }
+            if (tids < 20000 && tids > 19200) {
+                ni.y=(214)
+                ni.x=(236)
+            }
+            if(tids < 20500 && tids > 20000){
+                pen.size = 16
+                this.col = color(255,0,0,255)
+                ni.y--
+                ni.x++
+                    }
+                    if(tids < 21500 && tids > 20500){
+                        ni.size +=10
+                        this.col = color(255,0,0,255)
+                        ni.y--
+                
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+            if (tids > 30000) {
+                tegning = false;
+                direction = "";
+            }
+
+        },
+        vistid: function () {
+            var urDiv = document.getElementById('ur');
+
+            urDiv.innerText = hour() + ":" + minute() + ":" + second();
+
         }
-        }
+
+
     }
-    
+}
 
 
 
@@ -51,56 +216,88 @@ function setup() {
 
 
 function draw() {
-    if(direction == "left") ni.x--;
-    if(direction == "right") ni.x++;
-    if(direction == "up") ni.y--;
-    if(direction == "down") ni.y++;
+    if (direction == "left") ni.x--;
+    if (direction == "right") ni.x++;
+    if (direction == "up") ni.y--;
+    if (direction == "down") ni.y++;
+    if (direction == "move") ni.move();
+    console.log(mouseX, mouseY)
+    // setInterval(vistid, 1000);
+    // if(direction == "hvad er klokken") ni.vistid();
 
-   /* if(direction == "big") ni.size +;
-    if(direction == "small") ni.size -= 10;*/
 
-  /*  ni.x = direction == "left" ? ni.x -- : direction = "right" ? ni.x ++ : direction == "up" ? ni.y -- : direction = "down" ? ni.y ++ : ni.x;*/
 
-ni.bounce();
-ni.show();
+    //if(!tegning){
+    //   smiley = true;
+
+
+    //  }
+
+
+
+    //let timer = millis-timer;
+
+    /* if(direction == "big") ni.size +;
+     if(direction == "small") ni.size -= 10;*/
+
+    /*  ni.x = direction == "left" ? ni.x -- : direction = "right" ? ni.x ++ : direction == "up" ? ni.y -- : direction = "down" ? ni.y ++ : ni.x;*/
+
+    ni.bounce();
+    ni.show();
+    ni.vistid();
+
 }
 
 function showResult() {
-    if (myRec.resultValue == true) {
-        word = myRec.resultString.split(' ').pop();
-        displayWord.html(word.toLowerCase());
-        switch(word) {
-            
-
-          
+    if (!tegning) {
+        if (myRec.resultValue == true) {
+            word = myRec.resultString.split(' ').pop();
+            displayWord.html(word.toLowerCase());
+            switch (word) {
 
 
-            case 'left':
-              direction = "left"
-              break;
-            case 'right':
-              direction = "right"
-              break;
-              case 'up':
-              direction = "up"
-              break;
-              case 'down':
-              direction = "down"
-              break;
 
-              case "fisk":
-              ni.size +=50;
-              break;
-               case "sko":
-               ni.size -=50;
-               break;
+                case 'hej':
+                    direction = "move"
+                    break;
 
-            default:
-            direction = "stop"
-            
-          }
+                case 'tid':
+                    direction = "hvad er klokken"
+                    break;
+
+                case 'left':
+                    direction = "left"
+                    break;
+                case 'right':
+                    direction = "right"
+                    break;
+                case 'up':
+                    direction = "up"
+                    break;
+                case 'down':
+                    direction = "down"
+                    break;
+
+                case "fisk":
+                    ni.size += 50;
+                    break;
+                case "sko":
+                    ni.size -= 50;
+                    break;
+
+                default:
+                    direction = "stop"
+
+
+            }
+        }
+
+    } else {
+        sig = "tegner"
     }
+    displayWord.html(sig.toLowerCase());
 }
+
 
 /*
 OPGAVER 
